@@ -7,7 +7,7 @@ Args:
     represented as a list of keys.
 
 Returns:
-  bool: True if all the boxes can be unlocked, False otherwise.
+    bool: True if all the boxes can be unlocked, False otherwise.
 """
 
 
