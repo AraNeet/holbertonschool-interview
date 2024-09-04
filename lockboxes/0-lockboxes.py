@@ -18,8 +18,8 @@ def canUnlockAll(boxes: list) -> bool:
     stack: list = [0]
     while stack:
         current_box = stack.pop()
-    for key in boxes[current_box]:
-        if key < boxeslen and not unlocked[key]:
-            unlocked[key] = True
-            stack.append(key)
+        for key in boxes[current_box]:
+            if key < boxeslen and not unlocked[key]:
+                unlocked[key] = True
+                stack.append(key)
     return all(unlocked)
