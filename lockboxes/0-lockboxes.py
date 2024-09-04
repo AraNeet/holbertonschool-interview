@@ -1,15 +1,14 @@
 #!/usr/bin/python3
+"""
+Determine if all the boxes in the given list can be unlocked.
 
+Args:
+  boxes (list): A list of boxes, where each box is represented as a list of keys.
+
+Returns:
+  bool: True if all the boxes can be unlocked, False otherwise.
+"""
 def canUnlockAll(boxes: list) -> bool:
-  """
-  Determine if all the boxes in the given list can be unlocked.
-
-  Args:
-    boxes (list): A list of boxes, where each box is represented as a list of keys.
-
-  Returns:
-    bool: True if all the boxes can be unlocked, False otherwise.
-  """
 
   # This storages the len of the boxes list
   boxeslen: int = len(boxes)
