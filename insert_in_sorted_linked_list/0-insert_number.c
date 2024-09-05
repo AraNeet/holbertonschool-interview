@@ -15,33 +15,31 @@ listint_t *insert_node(listint_t **head, int number)
   
   new->n = number;
 
-  if (*head == NULL)
-  {
-    new->next = *head;
-    *head = new;
-    return new;
-  }
-  else
-  {
-    while(current != NULL && current->next != NULL)
+  if (!current || current->n >= number)
     {
-      if (current->next->n > new->n)
-      {
-        new->next = current->next;
-        current->next = new;
-        return(new);
-      }
-      else if (current->n > new->n)
-      {
-        new->next = current->next;
-        current->next = new;
-        return(new);
-      }
-
-      current = current->next;
+        new->next = *head;
+        *head = new;
+        return new;
     }
-  }
-  current->next = new;
 
-  return (new);
+    // Traverse the linked list
+    while (current != NULL && current->next != NULL)
+    {
+        // Check if the current position is the correct insertion point
+        if (current->next->n > number)
+        {
+            // Connect the new node to the next node
+            new->next = current->next;
+            // Connect the current node to the new node
+            current->next = new;
+            // Return the new node
+            return new;
+        }
+        // Move to the next node
+        current = current->next;
+    }
+    // connect current to new
+    current->next = new;
+    // Return the new node
+    return new;
 }
