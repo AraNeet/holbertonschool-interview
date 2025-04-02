@@ -26,6 +26,7 @@ Usage:
 Author: [Your Name]
 Date: [Optional]
 """
+
 import sys
 import re
 
@@ -50,10 +51,11 @@ def print_metrics():
         if code in status_code_counts:
             print(f"{code}: {status_code_counts[code]}")
 
-try:
-    for line in sys.stdin:
-        line = line.strip()
-        match = log_pattern.match(line)
+if __name__ == "__main__":
+    try:
+        for line in sys.stdin:
+            line = line.strip()
+            match = log_pattern.match(line)
         if match:
             status_code, file_size = match.groups()
             total_file_size += int(file_size)
@@ -63,9 +65,9 @@ try:
 
             if line_counter % 10 == 0:
                 print_metrics()
-except KeyboardInterrupt:
-    print_metrics()
-    raise
-finally:
-    print_metrics()
+    except KeyboardInterrupt:
+        print_metrics()
+        raise
+    finally:
+        print_metrics()
                 
