@@ -1,4 +1,31 @@
 #!/usr/bin/python3
+"""
+Log Metrics Collector
+
+This script reads log entries from standard input and computes metrics in real-time.
+
+Expected input format:
+<IP Address> - [<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>
+
+Behavior:
+- Processes each valid log line and extracts the status code and file size.
+- Accumulates total file size and counts the occurrence of specific status codes.
+- Prints metrics after every 10 valid lines or upon receiving a keyboard interruption (Ctrl+C).
+- Metrics include:
+    * Total file size
+    * Number of occurrences per valid status code:
+        200, 301, 400, 401, 403, 404, 405, 500
+
+Invalid lines (not matching the expected format) are ignored.
+
+Usage:
+    cat access.log | ./0-stats.py
+    OR
+    python 0-generator.py | python 0-stats.py
+
+Author: [Your Name]
+Date: [Optional]
+"""
 import sys
 import re
 
