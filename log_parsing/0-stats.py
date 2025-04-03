@@ -45,13 +45,13 @@ if __name__ == "__main__":
             line = line.strip()
             match = log_pattern.match(line)
             if not match:
-                continue  # Invalid line, skip
+                continue
 
             status_code, file_size = match.groups()
             try:
                 total_file_size += int(file_size)
             except ValueError:
-                continue  # Skip line if file_size is not an integer
+                continue
 
             if status_code in valid_status_codes:
                 status_code_counts[status_code] = status_code_counts.get(status_code, 0) + 1
